@@ -1,0 +1,29 @@
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>Toyname</th>
+    <th>comefrom</th>
+    <th></th>
+  </tr>
+  <% @toys.each do |toy| %>
+    <tr>
+      <td><%= toy.id %></td>
+      <td>
+        <%= link_to toy.toyname, toy_path(toy) %> 
+        <% toy.tags.each do |tag| %>
+          <span class="badge"><%= tag.title %></span>
+        <% end -%>
+      </td>
+      <td><%= toy.user.username %></td>
+      <td>
+        <% if toy.user == current_user %>
+          <%= toy.is_public ? "public" : "private" %>
+          <%= link_to "edit", edit_toy_path(toy) %>
+          <%= link_to "delete", toy, method: :delete,data: { confirm: "Are you sure to delete?" } %>
+        <% end -%> 
+      </td>
+    </tr>
+  <% end -%>
+</table>
+
+<%= will_paginate @toys %>

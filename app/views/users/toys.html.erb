@@ -1,0 +1,12 @@
+<h1><%= current_user.username %>'s warehouse</h1>
+
+<div>
+  <%= link_to "create toys", new_toy_path, class: "btn btn-primary" %> 
+  <%= link_to "my toys", toys_user_path(current_user), class: "btn btn-default" %>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= render 'toys/toys'%>
+  </div>
+</div>

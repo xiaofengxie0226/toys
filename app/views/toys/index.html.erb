@@ -1,0 +1,14 @@
+<h1>Toys</h1>
+
+<div>
+  <%= link_to "create toy", new_toy_path, class: "btn btn-primary" %>
+  <% if logged_in? %>
+    <%= link_to "my toys", toys_user_path(current_user), class: "btn btn-default" %>
+  <% end -%>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= render 'toys' %>
+  </div>
+</div>
